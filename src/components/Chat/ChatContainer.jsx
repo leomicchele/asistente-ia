@@ -66,7 +66,7 @@ const ChatContainer = () => {
   return (
     <div className="chat-container sticky-form">
       <header className="app-header">
-        <h1>Asistente IA</h1>
+        <h1>{import.meta.env.VITE_NOMBRE_TITULO || "Asistente IA"}</h1>
         <button onClick={handleResetChat} aria-label="Reiniciar Chat" className="reset-chat-button">
           <RotateCcw size={20} />
           Reiniciar chat
@@ -75,7 +75,7 @@ const ChatContainer = () => {
       <div className="messages-list">
         {messages.length === 0 ? (
           <div className="empty-chat">
-            <h2>Bienvenido al Asistente IA</h2>
+            <h2>Bienvenido al {import.meta.env.VITE_NOMBRE_TITULO || "Asistente IA"}</h2>
             <p>¿En qué puedo ayudarte hoy?</p>
           </div>
         ) : (
