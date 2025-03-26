@@ -1,0 +1,18 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/orc/(.*)",
+      "destination": "https://fnorch0-k6xtyn322tr2i.azurewebsites.net/api/orc/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/orc/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Methods", "value": "GET, POST, PUT, DELETE, OPTIONS" },
+        { "key": "Access-Control-Allow-Headers", "value": "Content-Type, Authorization" }
+      ]
+    }
+  ]
+}
