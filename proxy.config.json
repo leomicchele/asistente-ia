@@ -1,0 +1,8 @@
+{
+  "/api": {
+    "target": "https://fnorch0-k6xtyn322tr2i.azurewebsites.net",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
