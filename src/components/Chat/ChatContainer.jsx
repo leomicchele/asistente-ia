@@ -1,7 +1,9 @@
 import { useState, useRef, useEffect } from 'react';
-import { sendMessageToAI, resetConversationId } from '../../services/aiService';
+// import { sendMessageToAI, resetConversationId } from '../../services/aiService';
 import Message from './Message';
 import { Send, Loader2, RotateCcw } from 'lucide-react';
+import { resetConversationId } from '../../services/aiService';
+import { sendMessageToAI } from '../../services/aiService';
 
 const ChatContainer = () => {
   const [messages, setMessages] = useState([]);
