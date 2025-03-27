@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Copy, Check } from 'lucide-react';
+import { Copy, Check, ChevronDown, ChevronUp } from 'lucide-react';
 
 const Message = ({ message }) => {
   const [copied, setCopied] = useState(false);
+  const [mostrarRespuestaCompleta, setMostrarRespuestaCompleta] = useState(false);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(message.content);
@@ -10,16 +11,18 @@ const Message = ({ message }) => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const toggleRespuestaCompleta = () => {
+    setMostrarRespuestaCompleta(!mostrarRespuestaCompleta);
+  };
+
   const procesarTexto = (texto) => {
-    console.log("texto",texto);
     // Reemplazar saltos de línea por <br>
     let textoFormateado = texto.replace(/\n/g, '<br />');
 
     // Procesar enlaces en formato Markdown: [texto](url)
     textoFormateado = textoFormateado.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
     
-    console.log("textoFormateado",textoFormateado);
-       
+        
     return textoFormateado;
   };
 
@@ -48,6 +51,36 @@ const Message = ({ message }) => {
                 )}
                 {message.metadata.conversation_id && (
                   <span className="conversation-id">ID: {message.metadata.conversation_id}</span>
+                )}
+                
+                <button 
+                  className="toggle-response-button"
+                  onClick={toggleRespuestaCompleta}
+                  aria-label={mostrarRespuestaCompleta ? "Ocultar respuesta completa" : "Mostrar respuesta completa"}
+                >
+                  {mostrarRespuestaCompleta ? 
+                    <>Ocultar detalles <ChevronUp size={14} /></> : 
+                    <>Ver detalles <ChevronDown size={14} /></>
+                  }
+                </button>
+                
+                {mostrarRespuestaCompleta && (
+                  <div className="respuesta-completa">
+                    <h4>Detalles del mensaje:</h4>
+                    <div className="json-container">
+                      {Object.entries(message).map(([key, value]) => (
+                        key !== 'content' && (
+                          <div key={key} className="json-item">
+                            <strong>{key}:</strong> {
+                              typeof value === 'object' 
+                                ? <pre>{JSON.stringify(value, null, 2)}</pre>
+                                : <span>{typeof value === 'string' ? value : JSON.stringify(value)}</span>
+                            }
+                          </div>
+                        )
+                      ))}
+                    </div>
+                  </div>
                 )}
               </div>
             )}

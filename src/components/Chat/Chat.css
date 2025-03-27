@@ -93,9 +93,11 @@
   padding: 12px 16px;
   border-radius: 8px;
   position: relative;
-  max-width: 60%;
+  max-width: 75%;
   width: fit-content;
   min-width: min-content;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .user-message .message-content {
@@ -137,7 +139,10 @@
 /* Estilos para los metadatos del mensaje */
 .message-metadata {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
+  gap: 8px;
   font-size: 11px;
   color: #888;
   margin-top: 8px;
@@ -249,6 +254,96 @@
 
 .animate-spin {
   animation: spin 1s linear infinite;
+}
+
+/* Estilos para el botón desplegable de respuesta completa */
+.toggle-response-button {
+  background: transparent;
+  border: none;
+  font-size: 11px;
+  color: #4a7dff;
+  /* margin-left: auto; */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 6px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.toggle-response-button:hover {
+  background-color: rgba(74, 125, 255, 0.1);
+}
+
+.respuesta-completa {
+  margin-top: 8px;
+  padding: 10px;
+  background-color: #f0f4ff;
+  border-radius: 6px;
+  max-height: 300px;
+  overflow-y: auto;
+  font-family: monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  border: 1px solid #e0e5eb;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.respuesta-completa pre {
+  margin: 0;
+  overflow-x: auto;
+  max-width: 100%;
+  word-break: break-all;
+  white-space: pre-wrap;
+}
+
+.respuesta-completa h4 {
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #4a7dff;
+  border-bottom: 1px solid #d1ddff;
+  padding-bottom: 4px;
+}
+
+.json-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.json-item {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px dashed #e0e5eb;
+  padding-bottom: 6px;
+}
+
+.json-item:last-child {
+  border-bottom: none;
+}
+
+.json-item strong {
+  color: #4a7dff;
+  margin-bottom: 2px;
+}
+
+.json-item pre {
+  margin: 4px 0 0 0;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 11px;
+}
+
+.json-item span {
+  font-family: monospace;
+  word-break: break-all;
+  font-size: 11px;
 }
 
 /* Responsive */

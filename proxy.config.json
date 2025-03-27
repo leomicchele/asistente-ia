@@ -4,5 +4,23 @@
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/api/accesibilidad": {
+    "target": "https://func-balab-dev-1.azurewebsites.net",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api/accesibilidad": "/api/orc"
+    }
+  },
+  "/api/turismo": {
+    "target": "https://botiopenai-dzc8b7h9ebe5hqdu.a03.azurefd.net",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api/turismo": "/api/orc"
+    }
   }
 }
