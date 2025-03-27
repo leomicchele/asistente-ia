@@ -82,6 +82,13 @@
   flex-shrink: 0;
 }
 
+.bot-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
 /* Ajuste de margen para el avatar según el tipo de mensaje */
 .user-message .message-avatar {
   margin-right: 0;

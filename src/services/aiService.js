@@ -54,7 +54,23 @@ export const sendMessageToAI = async (message, metadata = {}) => {
     let response;
     
     // Seleccionar el cliente y el ID de conversación según el switch activo
-    if (metadata.accesibilidad) {
+    if (metadata.tramites) {
+      // Usar el cliente por defecto (trámites)
+      response = await aiClient.post('', {
+        conversation_id: currentConversationId,
+        question: message,
+        metadata: {
+          accesibilidad: metadata.accesibilidad || false,
+          turismo: metadata.turismo || false,
+          tramites: metadata.tramites || true
+        }
+      });
+      
+      // Actualizar el ID de conversación principal
+      if (response.data && response.data.conversation_id) {
+        currentConversationId = response.data.conversation_id;
+      }
+    } else if (metadata.accesibilidad) {
       // Usar el cliente de accesibilidad
       response = await accesibilidadClient.post('', {
         conversation_id: accesibilidadConversationId,
@@ -77,14 +93,14 @@ export const sendMessageToAI = async (message, metadata = {}) => {
         turismoConversationId = response.data.conversation_id;
       }
     } else {
-      // Usar el cliente por defecto (trámites)
+      // Si ningún switch está activo, usar trámites por defecto
       response = await aiClient.post('', {
         conversation_id: currentConversationId,
         question: message,
         metadata: {
-          accesibilidad: metadata.accesibilidad || false,
-          turismo: metadata.turismo || false,
-          tramites: metadata.tramites || false
+          accesibilidad: false,
+          turismo: false,
+          tramites: true
         }
       });
       

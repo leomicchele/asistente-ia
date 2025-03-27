@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Copy, Check, ChevronDown, ChevronUp } from 'lucide-react';
+import botAvatar from '../../assets/boti-image-64.png';
 
 const Message = ({ message }) => {
   const [copied, setCopied] = useState(false);
@@ -29,7 +30,8 @@ const Message = ({ message }) => {
   return (
     <div className={`message ${message.role === 'human' ? 'user-message' : 'ai-message'}`}>
       <div className="message-avatar">
-        {message.role === 'human' ? '👤' : '🤖'}
+        {message.role === 'human' ? '👤' : 
+         <img src={botAvatar} alt="Bot Avatar" className="bot-avatar" />}
       </div>
       <div className="message-content">
         {/* <p>{message.content}</p> */}
