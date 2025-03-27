@@ -164,6 +164,12 @@ const ChatContainer = () => {
     const userMessage = {
       role: 'human',
       content: inputValue,
+      timestamp: new Date().toLocaleTimeString('es-ES', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      }),
       metadata: {
         accesibilidad,
         turismo,
@@ -188,6 +194,12 @@ const ChatContainer = () => {
       const aiMessage = {
         role: 'assistant',
         content: response.content,
+        timestamp: new Date().toLocaleTimeString('es-ES', {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        }),
         metadata: response.metadata
       };
       

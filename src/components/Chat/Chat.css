@@ -57,10 +57,34 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
+/* Contenedor del mensaje */
+.message-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+/* Estilo base para el tiempo */
+.message-time {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 4px;
+}
+
+/* Alineación del tiempo según el tipo de mensaje */
+.message-time-user {
+  text-align: right;
+  margin-right: 50px;
+}
+
+.message-time-ai {
+  text-align: left;
+  margin-left: 50px;
+}
+
 /* Estilos para mensajes */
 .message {
   display: flex;
-  margin-bottom: 16px;
   align-items: flex-start;
 }
 
