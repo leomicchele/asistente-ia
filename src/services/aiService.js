@@ -13,8 +13,8 @@ const TURISMO_API_URL = '/api/turismo';
 const TURISMO_API_KEY = import.meta.env.VITE_TURISMO_API_KEY;
 
 // Configuración de Salesforce
-const SALESFORCE_TOKEN_URL = 'https://agenciasistemasdeinfogcba.my.salesforce.com/services/oauth2/token';
-const SALESFORCE_API_URL = 'https://api.salesforce.com';
+const SALESFORCE_TOKEN_URL = '/api/salesforce/services/oauth2/token';
+const SALESFORCE_API_URL = '/api/salesforce-api';
 const SALESFORCE_CLIENT_ID = import.meta.env.VITE_SALESFORCE_CLIENT_ID || '';
 const SALESFORCE_CLIENT_SECRET = import.meta.env.VITE_SALESFORCE_CLIENT_SECRET || '';
 const SALESFORCE_AGENT_ID = import.meta.env.VITE_SALESFORCE_AGENT_ID || '';
@@ -227,8 +227,7 @@ const createSalesforceToken = async () => {
     
     const config = {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Cookie': 'BrowserId=LHGpyJM9EfCcIR2D6t97xw; CookieConsentPolicy=0:1; LSKey-c$CookieConsentPolicy=0:1'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
       timeout: 30000 // 30 segundos de timeout
     };
@@ -322,8 +321,7 @@ const createSalesforceSession = async () => {
     const response = await salesforceClient.post(sessionUrl, requestBody, {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${salesforceAccessToken}`,
-        'Cookie': 'BrowserId=u8VeUZMMEfCMbrcnyD0_Fg'
+        'Authorization': `Bearer ${salesforceAccessToken}`
       }
     });
     
@@ -397,8 +395,7 @@ const sendMessageToSalesforce = async (message) => {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${salesforceAccessToken}`,
-        'Cookie': 'BrowserId=LHGpyJM9EfCcIR2D6t97xw; BrowserId=u8VeUZMMEfCMbrcnyD0_Fg'
+        'Authorization': `Bearer ${salesforceAccessToken}`
       }
     });
     
