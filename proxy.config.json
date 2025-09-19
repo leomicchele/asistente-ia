@@ -1,12 +1,12 @@
 {
   "/api": {
-    "target": "https://fnorch0-k6xtyn322tr2i.azurewebsites.net",
+    "target": "https://fnorch0-k6xtyn322tr2i-test.azurewebsites.net",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
   },
   "/api/accesibilidad": {
-    "target": "https://func-balab-dev-1.azurewebsites.net",
+    "target": "https://func-balab-dev-1-test.azurewebsites.net",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug",

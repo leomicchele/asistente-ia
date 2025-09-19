@@ -90,6 +90,7 @@ const ChatContainer = () => {
   const [accesibilidad, setAccesibilidad] = useState(false);
   const [turismo, setTurismo] = useState(false);
   const [tramites, setTramites] = useState(true);
+  const [salesforce, setSalesforce] = useState(false);
 
   const handleResetChat = () => {
     setMessages([]);
@@ -116,6 +117,9 @@ const ChatContainer = () => {
       case 'tramites':
         isCurrentlyActive = tramites;
         break;
+      case 'salesforce':
+        isCurrentlyActive = salesforce;
+        break;
       default:
         break;
     }
@@ -127,6 +131,7 @@ const ChatContainer = () => {
     setAccesibilidad(false);
     setTurismo(false);
     setTramites(false);
+    setSalesforce(false);
     
     // Activar el switch seleccionado
     switch(switchName) {
@@ -138,6 +143,9 @@ const ChatContainer = () => {
         break;
       case 'tramites':
         setTramites(true);
+        break;
+      case 'salesforce':
+        setSalesforce(true);
         break;
       default:
         break;
@@ -173,7 +181,8 @@ const ChatContainer = () => {
       metadata: {
         accesibilidad,
         turismo,
-        tramites
+        tramites,
+        salesforce
       }
     };
     
@@ -187,7 +196,8 @@ const ChatContainer = () => {
       const response = await sendMessageToAI(inputValue, {
         accesibilidad,
         turismo,
-        tramites
+        tramites,
+        salesforce
       });
       
       // Agregar respuesta de la IA con los metadatos
@@ -248,6 +258,10 @@ const ChatContainer = () => {
           <div style={switchStyles.optionItem}>
             <span>Tramites</span>
             <Switch checked={tramites} onChange={() => handleSwitchChange('tramites')} />
+          </div>
+          <div style={switchStyles.optionItem}>
+            <span>Salesforce</span>
+            <Switch checked={salesforce} onChange={() => handleSwitchChange('salesforce')} />
           </div>
           <div style={{
             ...switchStyles.optionItem,

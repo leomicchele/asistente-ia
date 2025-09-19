@@ -22,6 +22,29 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
         rewrite: (path) => path.replace(/^\/api\/turismo/, '/api/orc')
+      },
+      '/api/salesforce': {
+        target: 'https://agenciasistemasdeinfogcba.my.salesforce.com',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api\/salesforce/, ''),
+        configure: (proxy, options) => {
+          proxy.on('error', (err, req, res) => {
+            console.log('Proxy error:', err);
+          });
+          proxy.on('proxyReq', (proxyReq, req, res) => {
+            console.log('Sending Request to the Target:', req.method, req.url);
+          });
+        }
+      },
+      '/api/salesforce-api': {
+        target: 'https://api.salesforce.com',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api\/salesforce-api/, ''),
+        headers: {
+          'Origin': 'https://api.salesforce.com'
+        }
       }
     }
   }
