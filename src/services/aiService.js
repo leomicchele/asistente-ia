@@ -280,7 +280,7 @@ const createSalesforceSession = async () => {
       console.log('✅ Token existente encontrado');
     }
     
-    const sessionUrl = `${SALESFORCE_API_URL}/einstein/ai-agent/v1/sessions`;
+    const sessionUrl = `${SALESFORCE_API_URL}/einstein/ai-agent/v1/agents/${SALESFORCE_AGENT_ID}/sessions`;
     const externalSessionKey = generateUUID();
     
     console.log('📍 Session URL:', sessionUrl);
@@ -290,9 +290,6 @@ const createSalesforceSession = async () => {
     
     const requestBody = {
       "externalSessionKey": externalSessionKey,
-      "agentConfig": {
-        "agentId": SALESFORCE_AGENT_ID
-      },
       "instanceConfig": {
         "endpoint": "https://agenciasistemasdeinfogcba.my.salesforce.com"
       },

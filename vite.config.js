@@ -38,7 +38,7 @@ export default defineConfig({
         }
       },
       '/api/salesforce-api': {
-        target: 'https://api.einstein.com',
+        target: 'https://api.salesforce.com',
         changeOrigin: true,
         secure: true,
         rewrite: (path) => path.replace(/^\/api\/salesforce-api/, '')
