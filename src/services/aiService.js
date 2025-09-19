@@ -12,12 +12,12 @@ const ACCESIBILIDAD_API_KEY = import.meta.env.VITE_ACCESIBILIDAD_API_KEY;
 const TURISMO_API_URL = '/api/turismo';
 const TURISMO_API_KEY = import.meta.env.VITE_TURISMO_API_KEY;
 
-// Configuración de Salesforce - URLs directas (requiere Chrome sin CORS)
+// Configuración de Salesforce
 const SALESFORCE_TOKEN_URL = 'https://agenciasistemasdeinfogcba.my.salesforce.com/services/oauth2/token';
 const SALESFORCE_API_URL = 'https://api.salesforce.com';
-const SALESFORCE_CLIENT_ID = '3MVG9XDDwp5wgbs3hS4t3phI9KCs0K9_Fl8Z3OW9eWPiZ8OiYAXBEhZzbSovMv_EUOrS1ieFP.Rl88hAvxbdj';
-const SALESFORCE_CLIENT_SECRET = '31D6107CC8F06301F27E1E50A2C9E51D5A2DB90BF2A8830CEFB1136BD2B7BAAF';
-const SALESFORCE_AGENT_ID = '0Xxfo0000001HObCAM';
+const SALESFORCE_CLIENT_ID = import.meta.env.VITE_SALESFORCE_CLIENT_ID || '';
+const SALESFORCE_CLIENT_SECRET = import.meta.env.VITE_SALESFORCE_CLIENT_SECRET || '';
+const SALESFORCE_AGENT_ID = import.meta.env.VITE_SALESFORCE_AGENT_ID || '';
 
 // Cliente específico para Salesforce
 const salesforceClient = axios.create({
