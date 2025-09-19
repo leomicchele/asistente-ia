@@ -13,7 +13,7 @@ const TURISMO_API_URL = '/api/turismo';
 const TURISMO_API_KEY = import.meta.env.VITE_TURISMO_API_KEY;
 
 // Configuración de Salesforce
-const SALESFORCE_TOKEN_URL = '/api/salesforce/services/oauth2/token';
+const SALESFORCE_TOKEN_URL = '/api/salesforce-token';
 const SALESFORCE_API_URL = '/api/salesforce-api';
 const SALESFORCE_CLIENT_ID = import.meta.env.VITE_SALESFORCE_CLIENT_ID || '';
 const SALESFORCE_CLIENT_SECRET = import.meta.env.VITE_SALESFORCE_CLIENT_SECRET || '';
@@ -217,17 +217,17 @@ const createSalesforceToken = async () => {
     console.log('📍 URL:', SALESFORCE_TOKEN_URL);
     console.log('🔑 Client ID:', SALESFORCE_CLIENT_ID);
     
-    const requestData = new URLSearchParams({
-      'grant_type': 'client_credentials',
-      'client_id': SALESFORCE_CLIENT_ID,
-      'client_secret': SALESFORCE_CLIENT_SECRET
-    });
+    const requestData = {
+      grant_type: 'client_credentials',
+      client_id: SALESFORCE_CLIENT_ID,
+      client_secret: SALESFORCE_CLIENT_SECRET
+    };
     
-    console.log('📤 Datos de la request:', requestData.toString());
+    console.log('📤 Datos de la request:', requestData);
     
     const config = {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
       },
       timeout: 30000 // 30 segundos de timeout
     };
