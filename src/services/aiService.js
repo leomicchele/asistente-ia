@@ -280,7 +280,7 @@ const createSalesforceSession = async () => {
       console.log('✅ Token existente encontrado');
     }
     
-    const sessionUrl = `${SALESFORCE_API_URL}/einstein/ai-agent/v1/agents/${SALESFORCE_AGENT_ID}/sessions`;
+    const sessionUrl = `${SALESFORCE_API_URL}/einstein/ai-agent/v1/sessions`;
     const externalSessionKey = generateUUID();
     
     console.log('📍 Session URL:', sessionUrl);
@@ -288,12 +288,11 @@ const createSalesforceSession = async () => {
     console.log('🆔 External Session Key:', externalSessionKey);
     console.log('🔐 Token disponible (primeros 50 chars):', salesforceAccessToken?.substring(0, 50) + '...');
     
-    // Vamos a probar también una URL alternativa sin agent específico
-    const alternativeUrl = `${SALESFORCE_API_URL}/einstein/ai-agent/v1/sessions`;
-    console.log('🔄 URL alternativa (sin agent):', alternativeUrl);
-    
     const requestBody = {
       "externalSessionKey": externalSessionKey,
+      "agentConfig": {
+        "agentId": SALESFORCE_AGENT_ID
+      },
       "instanceConfig": {
         "endpoint": "https://agenciasistemasdeinfogcba.my.salesforce.com"
       },
@@ -303,21 +302,7 @@ const createSalesforceSession = async () => {
       "bypassUser": true
     };
     
-    // También probemos sin algunos parámetros opcionales
-    const simpleRequestBody = {
-      "externalSessionKey": externalSessionKey,
-      "instanceConfig": {
-        "endpoint": "https://agenciasistemasdeinfogcba.my.salesforce.com"
-      }
-    };
-    
-    console.log('📤 Request body completo:', JSON.stringify(requestBody, null, 2));
-    console.log('📤 Request body simple:', JSON.stringify(simpleRequestBody, null, 2));
-    
     console.log('📤 Request body:', JSON.stringify(requestBody, null, 2));
-    
-    // Usar la URL original con el Agent ID (como en Postman)
-    console.log('🔄 Usando URL con Agent ID (como Postman)...');
     const response = await salesforceClient.post(sessionUrl, requestBody, {
       headers: {
         'Content-Type': 'application/json',
