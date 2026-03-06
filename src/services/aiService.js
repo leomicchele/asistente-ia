@@ -21,15 +21,20 @@ export const sendMessage = async (question, origin, routeTo = null) => {
     const messages = data.messages || [];
     const lastAssistant = [...messages].reverse().find(m => m.role === 'assistant');
 
+    const route = data.outcome?.route;
+    const fallback = route === 'out_of_scope'
+      ? '[RESPUESTA INTERNA]: Pregunta fuera de alcance'
+      : route ? `[DERIVADO] a ${route}` : '';
     return {
-      content: lastAssistant?.content ?? '',
+      content: lastAssistant?.content || fallback,
       metadata: {
         conversation_id: data.id,
         response_time: data.response_time,
         original_question: data.original_question,
         question: data.question,
         outcome: data.outcome
-      }
+      },
+      node_metadata: data.node_metadata
     };
   } catch (error) {
     const statusCode = error.response?.status;

@@ -91,14 +91,23 @@ const Message = ({ message }) => {
                       <h4>Detalles del mensaje:</h4>
                       <div className="json-container">
                         {Object.entries(message).map(([key, value]) => (
-                          key !== 'content' && (
-                            <div key={key} className="json-item">
-                              <strong>{key}:</strong> {
-                                typeof value === 'object' 
+                          key !== 'content' && key !== 'role' && (
+                            <details key={key} className="json-item-details">
+                              <summary className="json-item-summary">
+                                <strong>{key}</strong>
+                                {typeof value !== 'object' && (
+                                  <span className="json-item-preview">
+                                    {typeof value === 'string' ? value : JSON.stringify(value)}
+                                  </span>
+                                )}
+                              </summary>
+                              <div className="json-item-content">
+                                {typeof value === 'object'
                                   ? <pre>{JSON.stringify(value, null, 2)}</pre>
                                   : <span>{typeof value === 'string' ? value : JSON.stringify(value)}</span>
-                              }
-                            </div>
+                                }
+                              </div>
+                            </details>
                           )
                         ))}
                       </div>

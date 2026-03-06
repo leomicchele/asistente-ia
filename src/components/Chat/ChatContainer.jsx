@@ -58,7 +58,8 @@ const ChatContainer = () => {
           second: '2-digit',
           hour12: false
         }),
-        metadata: response.metadata
+        metadata: response.metadata,
+        nucleo: response.node_metadata
       };
 
       setMessages((prev) => [...prev, aiMessage]);

@@ -379,6 +379,77 @@
   font-size: 11px;
 }
 
+/* Details colapsables para cada campo JSON */
+.json-item-details {
+  border-bottom: 1px dashed #e0e5eb;
+  padding-bottom: 6px;
+}
+
+.json-item-details:last-child {
+  border-bottom: none;
+}
+
+.json-item-summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  font-size: 12px;
+  padding: 2px 0;
+  user-select: none;
+}
+
+.json-item-summary::before {
+  content: '▶';
+  font-size: 9px;
+  color: #4a7dff;
+  transition: transform 0.15s ease;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.json-item-details[open] > .json-item-summary::before {
+  transform: rotate(90deg);
+}
+
+.json-item-summary::-webkit-details-marker {
+  display: none;
+}
+
+.json-item-summary strong {
+  color: #4a7dff;
+}
+
+.json-item-summary .json-item-preview {
+  font-family: monospace;
+  font-size: 11px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 250px;
+}
+
+.json-item-content {
+  padding: 4px 0 2px 18px;
+}
+
+.json-item-content pre {
+  margin: 4px 0 0 0;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  overflow-x: auto;
+  font-size: 11px;
+}
+
+.json-item-content span {
+  font-family: monospace;
+  word-break: break-all;
+  font-size: 11px;
+}
+
 /* Controles de canal y ruta en el header */
 .header-controls {
   display: flex;
