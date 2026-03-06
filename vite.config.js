@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api/chat': {
-        target: 'https://aca-orc-dev.happysmoke-87dca937.eastus2.azurecontainerapps.io',
+        target: process.env.VITE_CHAT_API_URL || 'https://aca-orc-dev.happysmoke-87dca937.eastus2.azurecontainerapps.io',
         changeOrigin: true,
         secure: true
       }
