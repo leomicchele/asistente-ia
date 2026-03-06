@@ -182,7 +182,9 @@
 }
 
 .message-metadata .response-time,
-.message-metadata .conversation-id {
+.message-metadata .conversation-id,
+.message-metadata .response-route,
+.message-metadata .response-task {
   font-family: monospace;
 }
 
@@ -375,6 +377,84 @@
   font-family: monospace;
   word-break: break-all;
   font-size: 11px;
+}
+
+/* Controles de canal y ruta en el header */
+.header-controls {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.control-group legend {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  padding: 0;
+  margin-bottom: 6px;
+}
+
+.control-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.control-chip {
+  position: relative;
+}
+
+.control-chip input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.control-chip label {
+  display: inline-block;
+  padding: 4px 11px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.65);
+  background: transparent;
+  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.control-chip label:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.control-chip input:checked + label {
+  background-color: #4a7dff;
+  border-color: #4a7dff;
+  color: white;
+}
+
+.control-divider {
+  width: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  align-self: stretch;
+  margin: 2px 0;
 }
 
 /* Responsive */

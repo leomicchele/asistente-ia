@@ -68,8 +68,14 @@ const Message = ({ message }) => {
                   {message.metadata.conversation_id && (
                     <span className="conversation-id">ID: {message.metadata.conversation_id}</span>
                   )}
-                  
-                  <button 
+                  {message.metadata.outcome?.route && (
+                    <span className="response-route">Ruta: {message.metadata.outcome.route}</span>
+                  )}
+                  {message.metadata.outcome?.task && (
+                    <span className="response-task">Tarea: {message.metadata.outcome.task}</span>
+                  )}
+
+                  <button
                     className="toggle-response-button"
                     onClick={toggleRespuestaCompleta}
                     aria-label={mostrarRespuestaCompleta ? "Ocultar respuesta completa" : "Mostrar respuesta completa"}
