@@ -1,8 +1,16 @@
 {
   "rewrites": [
     {
-      "source": "/api/chat/:path*",
-      "destination": "https://aca-orc-dev.happysmoke-87dca937.eastus2.azurecontainerapps.io/api/chat/:path*"
+      "source": "/api/chat",
+      "destination": "https://aca-orc-dev.happysmoke-87dca937.eastus2.azurecontainerapps.io/api/chat/"
+    },
+    {
+      "source": "/api/chat/",
+      "destination": "https://aca-orc-dev.happysmoke-87dca937.eastus2.azurecontainerapps.io/api/chat/"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://aca-orc-dev.happysmoke-87dca937.eastus2.azurecontainerapps.io/api/:path*"
     }
   ]
 }
